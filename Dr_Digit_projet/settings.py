@@ -83,8 +83,8 @@ DATABASES = {
         'NAME': 'drdigitcar', # le nom de notre base de donnees creee precedemment
         'USER': 'postgres', # attention : remplacez par votre nom d'utilisateur
         'PASSWORD': 'Ouangui137955',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'HOST': '127.0.0.1  ',
+        'POST': '5432',
     }
 }
 
@@ -127,11 +127,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'app_location/static/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mycarapp/static/media')
 
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 
