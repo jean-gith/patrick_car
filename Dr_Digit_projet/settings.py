@@ -27,7 +27,7 @@ SECRET_KEY = 'tb-2fd(pu#gtc(589pi(&enpmy&shv!l70l^(ucovwpg35vb3$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','carlocations.herokuapp.com']
+ALLOWED_HOSTS = ['carlocations.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
