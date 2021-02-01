@@ -12,11 +12,11 @@ class Voiture(models.Model):
     carcarburant = models.CharField('Carburant Voiture',max_length=50)
     carcategorie = models.CharField('Categorie Voiture',max_length=50)
     caroption = models.CharField(max_length=100)
-    carimg = models.ImageField('Image Principale Voiture',upload_to=settings.MEDIA_ROOT)
-    carimg1 = models.ImageField('Image1 Voiture',upload_to=settings.MEDIA_ROOT)
-    carimg2 = models.ImageField('Image2 Voiture',upload_to=settings.MEDIA_ROOT)
-    carimg3 = models.ImageField('Image3 Voiture',upload_to=settings.MEDIA_ROOT)
-    carimg4 = models.ImageField('Image4 Voiture',upload_to=settings.MEDIA_ROOT)
+    carimg = models.ImageField('Image Principale Voiture',upload_to="/images/")
+    carimg1 = models.ImageField('Image1 Voiture',upload_to="/images/")
+    carimg2 = models.ImageField('Image2 Voiture',upload_to="/images/")
+    carimg3 = models.ImageField('Image3 Voiture',upload_to="/images/")
+    carimg4 = models.ImageField('Image4 Voiture',upload_to="/images/")
     def __str__(self):
         return self.carnom
 
