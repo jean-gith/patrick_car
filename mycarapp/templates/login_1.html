@@ -1,0 +1,168 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include "head.html" %}
+
+  <body>
+    <!-- backtotop - start -->
+    <div id="thetop"></div>
+    <div class="backtotop">
+      <a href="#" class="scroll">
+        <i class="far fa-arrow-up"></i>
+      </a>
+    </div>
+    <!-- backtotop - end -->
+
+    <!-- preloader - start -->
+    <div class="preloader">
+      <div class="animation_preloader">
+        <div class="spinner"></div>
+        <p class="text-center">Loading</p>
+      </div>
+      <div class="loader">
+        <div class="row vh-100">
+          <div class="col-3 loader_section section-left">
+            <div class="bg"></div>
+          </div>
+          <div class="col-3 loader_section section-left">
+            <div class="bg"></div>
+          </div>
+          <div class="col-3 loader_section section-right">
+            <div class="bg"></div>
+          </div>
+          <div class="col-3 loader_section section-right">
+            <div class="bg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- preloader - end -->
+    {% include "header_principal.html" %}
+
+    <main>
+      <!-- mobile menu - start
+			================================================== -->
+      {% include "side_bar.html" %}
+      <!-- mobile menu - end
+			================================================== -->
+
+      <!-- breadcrumb_section - start
+			================================================== -->
+      <section class="breadcrumb_section text-center clearfix">
+        <div
+          class="page_title_area has_overlay d-flex align-items-center clearfix"
+          data-bg-image="{% static 'assets/images/backgrounds/bglogin.jpg' %}"
+        >
+          <div class="overlay"></div>
+          <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <h1 class="page_title text-white mb-0">Login</h1>
+          </div>
+        </div>
+        <div class="breadcrumb_nav clearfix" data-bg-color="#F2F2F2">
+          <div class="container">
+            <ul class="ul_li clearfix">
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li>Login</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- breadcrumb_section - end
+			================================================== -->
+
+      <!-- register_section - start
+			================================================== -->
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <h3 class="text-center text-danger mt-10">{{ message }}</h3>
+
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <section class="register_section sec_ptb_100 clearfix">
+        <div class="container">
+          <div
+            class="register_card mb_60"
+            data-bg-color="##F2F2F2"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="row align-items-center">
+              <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="reg_image" data-aos="fade-up" data-aos-delay="300">
+                  <img
+                    src="{% static 'assets/images/backgrounds/bglogin1.jpg' %}"
+                    alt="image_not_found"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="reg_form" data-aos="fade-up" data-aos-delay="500">
+                  <h3 class="form_title">LogIn:</h3>
+
+                  <span class="new_account mb_15"
+                    >Log In or <a href="{% url 'register' %}">Create an Account?</a></span
+                  >
+                  <form method="POST">
+                    {% csrf_token %}
+                    <label for="id_username"> Email utilisateur</label>
+
+                    
+                    {% if form.username.errors %}
+                      
+                      {% for error in form.username.errors  %}
+                        <small class="text-danger">{{error}}</small>
+                      {% endfor %}
+                        
+                    {% endif %}
+                    
+                    <div class="form_item">{{form.username}}</div>
+                    <label for="id_password">Mot de pass</label>
+                    {% if form.password.errors %}
+                      
+                      {% for error in form.password.errors  %}
+                        <small class="text-danger">{{error}}</small>
+                      {% endfor %}
+                        
+                    {% endif %}
+                    <div class="form_item">{{form.password}}</div>
+
+                    <button
+                      type="submit"
+                      class="custom_btn bg_default_red text-uppercase"
+                    >
+                      Login
+                      <img
+                        src="{% static 'assets/images/icons/icon_01.png' %}"
+                        alt="icon_not_found"
+                      />
+                    </button>
+                    <span class="reset_pass mb_15"
+                      ><a href="#!">Reset Your Password by e-mail?</a></span
+                    >
+                    <div class="checkbox_input mb-0">
+                      <label for="input_save"
+                        ><input id="input_save" type="checkbox" /> Save my name,
+                        email, and website in this browser for the next time I
+                        comment</label
+                      >
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+        </div>
+      </section>
+      <!-- register_section - end
+			================================================== -->
+    </main>
+
+    {% include "footer.html" %}
+  </body>
+</html>

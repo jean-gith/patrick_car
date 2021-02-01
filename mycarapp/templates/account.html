@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+	{% include "head.html" %}
+
+
+	<body>
+
+
+		<!-- backtotop - start -->
+		<div id="thetop"></div>
+		<div class="backtotop">
+			<a href="#" class="scroll">
+				<i class="far fa-arrow-up"></i>
+			</a>
+		</div>
+		<!-- backtotop - end -->
+
+		<!-- preloader - start -->
+		<div class="preloader">
+			<div class="animation_preloader">
+				<div class="spinner"></div>
+				<p class="text-center">Loading</p>
+			</div>
+			<div class="loader">
+				<div class="row vh-100">
+					<div class="col-3 loader_section section-left">
+						<div class="bg"></div>
+					</div>
+					<div class="col-3 loader_section section-left">
+						<div class="bg"></div>
+					</div>
+					<div class="col-3 loader_section section-right">
+						<div class="bg"></div>
+					</div>
+					<div class="col-3 loader_section section-right">
+						<div class="bg"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- preloader - end -->
+
+		{% include "header_account.html" %}
+		<!-- header_section - start
+		================================================== -->
+		
+		<!-- header_section - end
+		================================================== -->
+
+
+		<!-- main body - start
+		================================================== -->
+		<main>
+
+			{% include "side_bar.html" %}
+			
+			<section class="breadcrumb_section text-center clearfix">
+				<div class="page_title_area has_overlay d-flex align-items-center clearfix" data-bg-image="assets/images/breadcrumb/bg_10.jpg">
+					<div class="overlay"></div>
+					<div class="container" data-aos="fade-up" data-aos-delay="100">
+						<h1 class="page_title text-white mb-0">My Account</h1>
+					</div>
+				</div>
+				<div class="breadcrumb_nav clearfix" data-bg-color="#F2F2F2">
+					<div class="container">
+						<ul class="ul_li clearfix">
+							<li><a href="{% url 'home' %}">Home</a></li>
+							<li>Account</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		
+			<section class="account_section sec_ptb_100 clearfix">
+				<div class="container">
+					<div class="row justify-content-lg-between justify-content-md-center justify-content-sm-center">
+
+						<div class="col-lg-4 col-md-8 col-sm-10 col-xs-12">
+							<div class="account_tabs_menu clearfix" data-bg-color="#F2F2F2" data-aos="fade-up" data-aos-delay="100">
+								<h3 class="list_title mb_15">Account Details:</h3>
+								<ul class="ul_li_block nav" role="tablist">
+									<li>
+										<a class="active" data-toggle="tab" href="#admin_tab"><i class="fas fa-user"></i> {{user.username}}</a>
+									</li>
+									<li>
+										<a href="{% url 'logout1' %}"><i class="fas fa-sign-out-alt"></i> Log Out <img class="arrow" src="{% static 'assets/images/icons/icon_02.png' %}" alt="icon_not_found"></a>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+							<div class="account_tab_content tab-content">
+								<div id="admin_tab" class="tab-pane active">
+									<div class="account_info_list" data-aos="fade-up" data-aos-delay="100">
+										<h3 class="list_title mb_30">Account:</h3>
+										<ul class="ul_li_block clearfix">
+											<li><span>Name:</span> {{user.username}}</li>
+											<li><span>E-mail:</span> {{user.email}}</li>
+											<li><span>Phone Number:</span> {{user.telephone}}</li>
+											<li><span>Country:</span> {{user.localisation}}</li>
+											
+										</ul>
+										<a class="text_btn text-uppercase" href="#!"><span>Change Account Information</span> <img src="{% static 'assets/images/icons/icon_02.png' %}" alt="icon_not_found"></a>
+									</div>
+
+									
+
+									<div class="account_info_list" data-aos="fade-up" data-aos-delay="500">
+										<h3 class="list_title mb_30">Historique des reservations:</h3>
+										<ul class="ul_li_block clearfix">
+											<li><span>Upcoming Reservations:</span> No Reservations Yet</li>
+											<li><span>Past Rentals:</span> 0</li>
+										</ul>
+										<a class="text_btn text-uppercase" href="{% url 'voiture' %}"><span>Faire une reservation</span> <img src="{% static 'assets/images/icons/icon_02.png' %}" alt="icon_not_found"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</section>
+			<!-- account_section - end
+			================================================== -->
+
+
+		</main>
+		<!-- main body - end
+		================================================== -->
+
+
+		<!-- footer_section - start
+		================================================== -->
+		 {% include "footer.html" %}
+  </body>
+</html>

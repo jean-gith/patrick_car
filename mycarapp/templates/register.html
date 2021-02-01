@@ -1,0 +1,168 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include "head.html" %}
+
+  <body>
+    <!-- backtotop - start -->
+    <div id="thetop"></div>
+    <div class="backtotop">
+      <a href="#" class="scroll">
+        <i class="far fa-arrow-up"></i>
+      </a>
+    </div>
+    <!-- backtotop - end -->
+
+    <!-- preloader - start -->
+    <div class="preloader">
+      <div class="animation_preloader">
+        <div class="spinner"></div>
+        <p class="text-center">Loading</p>
+      </div>
+      <div class="loader">
+        <div class="row vh-100">
+          <div class="col-3 loader_section section-left">
+            <div class="bg"></div>
+          </div>
+          <div class="col-3 loader_section section-left">
+            <div class="bg"></div>
+          </div>
+          <div class="col-3 loader_section section-right">
+            <div class="bg"></div>
+          </div>
+          <div class="col-3 loader_section section-right">
+            <div class="bg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- preloader - end -->
+    {% include "header_principal.html" %}
+
+    <main>
+      <!-- mobile menu - start
+			================================================== -->
+      {% include "side_bar.html" %}
+      <!-- mobile menu - end
+			================================================== -->
+
+      <!-- breadcrumb_section - start
+			================================================== -->
+      <section class="breadcrumb_section text-center clearfix">
+        <div
+          class="page_title_area has_overlay d-flex align-items-center clearfix"
+          data-bg-image="{% static 'assets/images/backgrounds/bgvoiture.jpg' %}"
+        >
+          <div class="overlay"></div>
+          <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <h1 class="page_title text-white mb-0">Register</h1>
+          </div>
+        </div>
+        <div class="breadcrumb_nav clearfix" data-bg-color="#F2F2F2">
+          <div class="container">
+            <ul class="ul_li clearfix">
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li>Register</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- breadcrumb_section - end
+			================================================== -->
+
+      <!-- register_section - start
+			================================================== -->
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <h3 class="text-center text-danger">{{ message }}</h3>
+
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <section class="register_section sec_ptb_100 clearfix">
+        <div class="container">
+         
+
+          <div
+            class="register_card mb-0"
+            data-bg-color="##F2F2F2"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="section_title mb_30 text-center">
+              <h2
+                class="title_text mb-0"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <span>Register</span>
+              </h2>
+            </div>
+            <form action="" method="POST">{% csrf_token %}
+              <div class="row justify-content-lg-between">
+                <div
+                  class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                >
+                  <div class="form_item">
+                      <label for="id_username"> Nom utilisateur</label>
+                    {{form.username}}
+                  </div>
+                  <div class="form_item">
+                      <label for="id_password"> Password</label>
+                    {{form.password}}
+                  </div>
+                  <div class="form_item">
+                      <label for="id_password2"> Password Confirmation</label>
+                    {{form.password2}}
+                  </div>
+                  <p>
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, 
+                   aperiam! Ipsa, illo explicabo deleniti quas 
+                   ratione possimus! Et, blanditiis ut!
+                  </p>
+                </div>
+
+                <div
+                  class="col-lg-6 col-md-6 col-sm-12 col-xs-12"data-aos="fade-up"data-aos-delay="700">
+                  <div class="form_item">
+                      <label for="id_email"> Email</label>
+                    {{form.email}}
+                  </div>
+                  <div class="form_item">
+                      <label for="id_localisation"> Localisation</label>
+                    {{form.localisation}}
+                  </div>
+
+                  <div class="form_item">
+                      <label for="id_telephone"> Numero Telephone</label>
+                    {{form.telephone}}
+                  </div>
+                  
+                  
+                  <button
+                    type="submit"
+                    class="custom_btn bg_default_red text-uppercase mb-0"
+                  >
+                    Creer Compte
+                    <img
+                      src="{% static 'assets/images/icons/icon_01.png' %}"
+                      alt="icon_not_found"
+                    />
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- register_section - end
+			================================================== -->
+    </main>
+
+    {% include "footer.html" %}
+  </body>
+</html>

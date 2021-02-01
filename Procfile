@@ -1,0 +1,1 @@
+web: gunicorn Dr_Digit_projet.wsgi --timeout 120

@@ -1,0 +1,409 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include "head.html" %}
+
+  <body>
+    <!-- backtotop - start -->
+    <div id="thetop"></div>
+    <div class="backtotop">
+      <a href="#" class="scroll">
+        <i class="far fa-arrow-up"></i>
+      </a>
+    </div>
+    <!-- backtotop - end -->
+
+    <!-- preloader - start -->
+    <div class="preloader">
+      <div class="animation_preloader">
+        <div class="spinner"></div>
+        <p class="text-center">Loading</p>
+      </div>
+      <div class="loader">
+        <div class="row vh-100">
+          <div class="col-3 loader_section section-left">
+            <div class="bg"></div>
+          </div>
+          <div class="col-3 loader_section section-left">
+            <div class="bg"></div>
+          </div>
+          <div class="col-3 loader_section section-right">
+            <div class="bg"></div>
+          </div>
+          <div class="col-3 loader_section section-right">
+            <div class="bg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- preloader - end -->
+    {% include "header_principal.html" %}
+
+    <main>
+      {% include "side_bar.html" %}
+      <!-- mobile menu - start
+			================================================== -->
+
+      <!-- mobile menu - end
+			================================================== -->
+
+      <!-- breadcrumb_section - start
+			================================================== -->
+      <section class="breadcrumb_section text-center clearfix">
+        <div
+          class="page_title_area has_overlay d-flex align-items-center clearfix"
+          data-bg-image="{% static 'assets/images/backgrounds/bgreservation.jpg' %}"
+        >
+          <div class="overlay"></div>
+          <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <h1 class="page_title text-white mb-0">Reservation</h1>
+          </div>
+        </div>
+        <div class="breadcrumb_nav clearfix" data-bg-color="#F2F2F2">
+          <div class="container">
+            <ul class="ul_li clearfix">
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'voiture' %}">Our Cars</a></li>
+              <li>Reservation</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- breadcrumb_section - end
+			================================================== -->
+
+      <!-- reservation_section - start
+      ================================================== -->
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <h3 class="text-center text-success">{{ message }}</h3>
+
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <section class="reservation_section sec_ptb_100 clearfix">
+        <div class="container">
+          <div
+            class="row justify-content-lg-between justify-content-md-center justify-content-sm-center"
+          >
+            <div class="col-lg-4 col-md-8 col-sm-10 col-xs-12">
+              <div
+                class="feature_vehicle_item mt-0 ml-0"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <h3 class="item_title mb-0">
+                  <a href="#!"> 2020 Audi New Generation P00234 {{voiture1.carid}}</a>
+                </h3>
+                <div class="item_image position-relative">
+                  <a class="image_wrap" href="#!">
+                    <img
+                      src="{{voiture1.carimg.url}}"
+                      alt="image_not_found"
+                    />
+                  </a>
+                  <span class="item_price bg_default_blue">{{voiture1.carsprix}}/Day</span>
+                </div>
+                <ul class="info_list ul_li_center clearfix">
+                  <li>Sports</li>
+                  <li>Auto</li>
+                  <li>2 Passengers</li>
+                  <li>Electro</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+              <div class="reservation_form">
+                <form method="POST">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                      <div
+                        class="form_item"
+                        data-aos="fade-up"
+                        data-aos-delay="100"
+                      >
+                        <h4 class="input_title">Lieux de Prise de voiture</h4>
+                        <div class="position-relative">
+                          <input
+                            id="location_two"
+                            type="text"
+                            name="lieuxprise"
+                            required
+                            placeholder="86 Albert Road, London, N51 4VK"
+                          />
+                          <label for="location_two" class="input_icon"
+                            ><i class="fas fa-map-marker-alt"></i
+                          ></label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                      <div
+                        class="form_item"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        <h4 class="input_title">Date de Prise</h4>
+                        <input type="date" name="dateprise" required />
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                      <div
+                        class="form_item"
+                        data-aos="fade-up"
+                        data-aos-delay="300"
+                      >
+                        <h4 class="input_title">Heure de Prise</h4>
+                        <input type="time" name="heureprise" />
+                      </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                      <div
+                        class="form_item"
+                        data-aos="fade-up"
+                        data-aos-delay="400"
+                      >
+                        <h4 class="input_title">Lieux de Depot</h4>
+                        <div class="position-relative">
+                          <input
+                            id="location_three"
+                            type="text"
+                            name="lieuxretour"
+                            required
+                            placeholder="86 Albert Road, London, N51 4VK"
+                          />
+                          <label for="location_three" class="input_icon"
+                            ><i class="fas fa-map-marker-alt"></i
+                          ></label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                      <div
+                        class="form_item"
+                        data-aos="fade-up"
+                        data-aos-delay="500"
+                      >
+                        <h4 class="input_title">Date Depot</h4>
+                        <input type="date" name="dateretour" required />
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                      <div
+                        class="form_item"
+                        data-aos="fade-up"
+                        data-aos-delay="600"
+                      >
+                        <h4 class="input_title">Heure Depot</h4>
+                        <input type="time" name="heuredepot" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="mt-0" data-aos="fade-up" data-aos-delay="700" />
+
+                  <div class="reservation_offer_checkbox">
+                    <h4
+                      class="input_title"
+                      data-aos="fade-up"
+                      data-aos-delay="800"
+                    >
+                      Car Location:
+                    </h4>
+                    <div class="row">
+                      <div
+                        class="col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                        data-aos="fade-up"
+                        data-aos-delay="900"
+                      >
+                        
+                        
+                       
+                      </div>
+
+                      <div
+                        class="col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                        data-aos="fade-up"
+                        data-aos-delay="900"
+                      >
+                        
+                        
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="mt-0" data-aos="fade-up" data-aos-delay="100" />
+
+                  <div class="reservation_customer_details">
+                    <h4
+                      class="input_title"
+                      data-aos="fade-up"
+                      data-aos-delay="100"
+                    >
+                      Customer Details:
+                    </h4>
+                    <ul
+                      class="customer_gender ul_li clearfix"
+                      data-aos="fade-up"
+                      data-aos-delay="300"
+                    >
+                      <li>
+                        <div class="checkbox_input">
+                          <label for="mr"
+                            ><input type="radio" value="mr" name="gender" />
+                            Mr.</label
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="checkbox_input">
+                          <label for="ms"
+                            ><input type="radio" value="ms" name="gender" />
+                            Ms.</label
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
+                        <div
+                          class="form_item"
+                          data-aos="fade-up"
+                          data-aos-delay="400"
+                        >
+                          <input
+                            type="text"
+                            name="nom"
+                            required
+                            placeholder="First Name"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
+                        <div
+                          class="form_item"
+                          data-aos="fade-up"
+                          data-aos-delay="500"
+                        >
+                          <input
+                            type="text"
+                            name="prenom"
+                            placeholder="Last Name"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
+                        <div
+                          class="form_item"
+                          data-aos="fade-up"
+                          data-aos-delay="600"
+                        >
+                          <input
+                            type="text"
+                            name="email"
+                            placeholder="E-mail adress"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
+                        <div
+                          class="form_item"
+                          data-aos="fade-up"
+                          data-aos-delay="700"
+                        >
+                          <input
+                            type="text"
+                            name="tel"
+                            placeholder="Phone Number"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="form_item"
+                      data-aos="fade-up"
+                      data-aos-delay="800"
+                    >
+                      <textarea
+                        name="information"
+                        placeholder="Additional information (Optional)"
+                      ></textarea>
+                    </div>
+                  <!--
+                    <div data-aos="fade-up" data-aos-delay="100">
+                      <a class="terms_condition" href="#!"
+                        ><i class="fas fa-info-circle mr-1"></i> You must be at
+                        least 21 years old to rent this car. Collision Damage
+                        Waiver (CDW)</a
+                      >
+                    </div>
+                    -->
+
+                    <hr data-aos="fade-up" data-aos-delay="200" />
+
+                    <div
+                      class="row align-items-center justify-content-lg-between"
+                    >
+                      <div
+                        class="col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        <a class="bonus_program" href="#!"
+                          ><i class="far fa-angle-left mr-1"></i> Bonus
+                          Program</a
+                        >
+                        <div>
+                          <label for="accept"
+                            ><input type="hidden" name="voiture" value="{{voiture1.carid}}" /></label
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                        data-aos="fade-up"
+                        data-aos-delay="300"
+                      >
+                        <button
+                          type="submit"
+                          class="custom_btn bg_default_red text-uppercase"
+                        >
+                          Reservation Now
+                          <img
+                            src="assets/images/icons/icon_01.png"
+                            alt="icon_not_found"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- reservation_section - end
+			================================================== -->
+    </main>
+
+    {% include "footer.html" %}
+  </body>
+</html>
