@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'drdigitcar', # le nom de notre base de donnees creee precedemment
         'USER': 'postgres', # attention : remplacez par votre nom d'utilisateur
         'PASSWORD': 'Ouangui137955',
-        'HOST': '',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
