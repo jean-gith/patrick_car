@@ -15,8 +15,7 @@ import os
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -84,7 +83,7 @@ DATABASES = {
         'NAME': 'drdigitcar', # le nom de notre base de donnees creee precedemment
         'USER': 'postgres', # attention : remplacez par votre nom d'utilisateur
         'PASSWORD': 'Ouangui137955',
-        'HOST': '127.0.0.1',
+        'HOST': '',
         'POST': '5432',
     }
 }
@@ -127,10 +126,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT=os.path.join(BASE_DIR,"media")
-STATIC_ROOT=os.path.join(BASE_DIR,"staticfiles")
-MEDIA_URL='/media/'
-if os.environ.get('env')=='Production':
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'mycarapp/static/media')
+
+STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
+
+if os.environ.get('env') == 'PRODUCTION':
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
     STATICFILES_DIR = [os.path.join(PROJECT_ROOT, 'static')]
