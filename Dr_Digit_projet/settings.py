@@ -27,7 +27,7 @@ SECRET_KEY = 'tb-2fd(pu#gtc(589pi(&enpmy&shv!l70l^(ucovwpg35vb3$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ouanguipatrick.herokuapp.com']
+ALLOWED_HOSTS = ['ouangui-pat.herokuapp.com']
 
 
 # Application definition
@@ -143,3 +143,5 @@ if os.environ.get('ENV') == 'PRODUCTION':
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
+
+      
