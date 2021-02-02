@@ -27,7 +27,7 @@ SECRET_KEY = 'tb-2fd(pu#gtc(589pi(&enpmy&shv!l70l^(ucovwpg35vb3$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['carlocations.herokuapp.com']
+ALLOWED_HOSTS = ['ouanguipatrick.herokuapp.com']
 
 
 # Application definition
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Dr_Digit_projet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', # on utilise l'adaptateur postgresql
-        'NAME': 'drdigitcar', # le nom de notre base de donnees creee precedemment
+        'NAME': 'kala', # le nom de notre base de donnees creee precedemment
         'USER': 'postgres', # attention : remplacez par votre nom d'utilisateur
         'PASSWORD': 'Ouangui137955',
         'HOST': '',
@@ -135,7 +135,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 
-if os.environ.get('env') == 'PRODUCTION':
+if os.environ.get('ENV') == 'PRODUCTION':
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
     STATICFILES_DIR = [os.path.join(PROJECT_ROOT, 'static')]
